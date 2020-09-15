@@ -30,16 +30,10 @@ class User(AbstractUser):
 
     """ custom user model """
 
-    avatar = models.ImageField(null=True, blank=True)
-    gender = models.CharField(
-        max_length=10, null=True, choices=GENDER_CHOICES, blank=True,
-    )
+    avatar = models.ImageField(blank=True)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True,)
     bio = models.TextField(default="", blank=True)
-    birthdate = models.DateField(null=True)
-    langauge = models.CharField(
-        max_length=2, null=True, choices=LANGAUGE_CHOICES, blank=True
-    )
-    currency = models.CharField(
-        max_length=3, null=True, choices=CURRENCY_CHOICES, blank=True
-    )
+    birthdate = models.DateField(blank=True, null=True)
+    langauge = models.CharField(max_length=2, choices=LANGAUGE_CHOICES, blank=True)
+    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, blank=True)
     superhost = models.BooleanField(default=False)
