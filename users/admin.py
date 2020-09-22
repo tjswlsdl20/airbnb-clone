@@ -5,16 +5,19 @@ from . import models
 
 @admin.register(models.User)
 class CustomUserAdmin(UserAdmin):
+
+    """ Custom User Admin """
+
     fieldsets = UserAdmin.fieldsets + (
         (
-            "cutomprofile",
+            "Custom Profile",
             {
                 "fields": (
                     "avatar",
                     "gender",
                     "bio",
                     "birthdate",
-                    "langauge",
+                    "language",
                     "currency",
                     "superhost",
                 )
@@ -22,5 +25,17 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
+    list_filter = UserAdmin.list_filter + ("superhost",)
 
-# Register your models here.
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "language",
+        "currency",
+        "superhost",
+        "is_staff",
+        "is_superuser",
+    )
