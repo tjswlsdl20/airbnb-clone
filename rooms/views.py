@@ -1,3 +1,7 @@
+from django.shortcuts import render
+from . import models
+
+
 def all_rooms(request):
-    pass
-    return render(request, "all_rooms")
+    all_rooms = models.Room.objects.all()
+    return render(request, "rooms/home.html", context={"rooms_list": all_rooms})
