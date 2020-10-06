@@ -21,3 +21,9 @@ def room_detail(request, pk):
         return render(request, "rooms/detail.html", {"room": room})
     except models.Room.DoesNotExist:
         return redirect(reverse("core:home"))
+
+
+def search(request):
+    city = request.GET.get("city")
+    city = str.capitalize(city)
+    return render(request, "rooms/search.html", {"city": city})
