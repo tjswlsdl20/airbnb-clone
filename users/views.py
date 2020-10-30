@@ -33,7 +33,6 @@ class SignUpView(FormView):
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
-    initial = {"first_name": "Nicoas", "last_name": "Serr", "email": "itn@las.com"}
 
     def form_valid(self, form):
         form.save()
@@ -97,9 +96,9 @@ def github_callback(request):
                 profile_json = profile_request.json()
                 username = profile_json.get("login", None)
                 if username is not None:
-                    name = profile_json.get("name", "default")
-                    email = profile_json.get("email", "default")
-                    bio = profile_json.get("bio", "default")
+                    name = profile_json.get("name")
+                    email = profile_json.get("email")
+                    bio = profile_json.get("bio")
                     try:
                         user = models.User.objects.get(email=email)
                         if user.login_method != models.User.LOGIN_GITHUB:
