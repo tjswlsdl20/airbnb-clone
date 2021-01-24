@@ -10,6 +10,7 @@ urlpatterns = [
     path("reservations/", include("reservations.urls", namespace="reservations")),
     path("reviews/", include("reviews.urls", namespace="reviews")),
     path("admin/", admin.site.urls),
+    path("switch-language/", views.switch_language, name="switch-language"),
 ]
 
 
